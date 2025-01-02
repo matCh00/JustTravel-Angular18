@@ -1,1 +1,9 @@
-<p>sidebar works!</p>
+@if (sidebarVisible()) {
+  <aside>
+    <ul>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/travel">Travel</a></li>
+      <li><a routerLink="/review">Review</a></li>
+    </ul>
+  </aside>
+}
