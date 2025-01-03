@@ -56,7 +56,15 @@ body {
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
+
+@font-face {
+  font-family: 'SpecialFont';
+  src: url('../public/PlaywriteAUSA-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .special-font {
-  font-family: "Lucida Calligraphy", sans-serif;
+  font-family: 'SpecialFont';
   font-size: 2rem;
 }
