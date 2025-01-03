@@ -1,0 +1,20 @@
+.logo-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+
+  .globe {
+    width: 80px;
+    height: 80px;
+  }
+
+  .plane {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 30px;
+  }
+}

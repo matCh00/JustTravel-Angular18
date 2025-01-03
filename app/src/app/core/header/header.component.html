@@ -4,6 +4,10 @@
   </ng-template>
 
   <ng-template #center>
+    <div class="logo-container" (click)="triggerPlaneAnimation()">
+      <img src="logo.png" alt="" class="globe">
+      <img src="plane.png" alt="" class="plane" [@fly]="isAnimating">
+    </div>
   </ng-template>
 
   <ng-template #end>
