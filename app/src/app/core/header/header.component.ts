@@ -1,17 +1,19 @@
 import {Component, output} from '@angular/core';
-import {ButtonDirective} from 'primeng/button';
+import {Button} from 'primeng/button';
+import {Toolbar} from 'primeng/toolbar';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
-    ButtonDirective
+    Button,
+    Toolbar
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
 
-  toggleSidebar = output();
+  toggleSidebar = output<boolean>();
 
 }

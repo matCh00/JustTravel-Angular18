@@ -1,8 +1,8 @@
-<app-header></app-header>
+<app-header (toggleSidebar)="sidebarVisible = $event"></app-header>
 
-<app-sidebar></app-sidebar>
+<app-sidebar [(sidebarVisible)]="sidebarVisible"></app-sidebar>
 
-<main>
+<main class="content">
   <router-outlet />
 </main>
 

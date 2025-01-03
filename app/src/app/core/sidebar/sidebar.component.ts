@@ -1,19 +1,19 @@
-import {Component, input} from '@angular/core';
+import {Component, model} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {Sidebar} from 'primeng/sidebar';
+import {Drawer} from 'primeng/drawer';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [
     RouterLink,
-    Sidebar
+    Drawer
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
 
-  sidebarVisible = input<boolean>(false);
+  sidebarVisible = model<boolean>(false);
 
 }

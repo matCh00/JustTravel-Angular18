@@ -1,5 +1,11 @@
-<header>
-  <div>
-    <button type="button" pButton icon="pi pi-bars" (click)="toggleSidebar.emit()"></button>
-  </div>
-</header>
+<p-toolbar id="header">
+  <ng-template #start>
+    <p-button type="button" icon="pi pi-bars" (click)="toggleSidebar.emit(true)"></p-button>
+  </ng-template>
+
+  <ng-template #center>
+  </ng-template>
+
+  <ng-template #end>
+  </ng-template>
+</p-toolbar>

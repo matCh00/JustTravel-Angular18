@@ -1,9 +1,12 @@
-@if (sidebarVisible()) {
-  <aside>
-    <ul>
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/travel">Travel</a></li>
-      <li><a routerLink="/review">Review</a></li>
-    </ul>
-  </aside>
-}
+<p-drawer
+  [(visible)]="sidebarVisible"
+  position="left"
+  [style]="{width:'15em'}"
+  header="Contents"
+>
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/travel">Travel</a></li>
+    <li><a routerLink="/review">Review</a></li>
+  </ul>
+</p-drawer>

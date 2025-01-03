@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {HeaderComponent} from './core/header/header.component';
 import {SidebarComponent} from './core/sidebar/sidebar.component';
@@ -11,6 +11,20 @@ import {FooterComponent} from './core/footer/footer.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  sidebarVisible: boolean = false;
+
+  ngOnInit(): void {
+    window.addEventListener('resize', this.updateContentHeight);
+    window.addEventListener('load', this.updateContentHeight);
+  }
+
+  private updateContentHeight() {
+    const headerHeight = document.getElementById('header')?.offsetHeight;
+    const footerHeight = document.getElementById('footer')?.offsetHeight;
+    document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+    document.documentElement.style.setProperty('--footer-height', `${footerHeight}px`);
+  }
 
 }
