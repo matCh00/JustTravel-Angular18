@@ -1,6 +1,34 @@
 @import "primeflex/primeflex";
 @import "primeicons/primeicons.css";
 
+:root {
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #14532d;
+  --green-950: #052e16;
+  --primary-50: var(--green-50) !important;
+  --primary-100: var(--green-100) !important;
+  --primary-200: var(--green-200) !important;
+  --primary-300: var(--green-300) !important;
+  --primary-400: var(--green-400) !important;
+  --primary-500: var(--green-500) !important;
+  --primary-600: var(--green-600) !important;
+  --primary-700: var(--green-700) !important;
+  --primary-800: var(--green-800) !important;
+  --primary-900: var(--green-900) !important;
+  --primary-950: var(--green-950) !important;
+  --primary-color: var(--primary-500) !important;
+  --primary-color-background: var(--primary-50);
+  --primary-color-background-transparent: rgba(244, 252, 247, 0.8);
+}
+
 body {
   font-family: Segoe UI, sans-serif;
 }
@@ -8,7 +36,7 @@ body {
 #header .p-toolbar {
   position: sticky;
   top: 0;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--primary-color-background-transparent);
   backdrop-filter: blur(5px);
 
   border-radius: 0;
@@ -17,6 +45,8 @@ body {
 }
 
 #footer .p-toolbar {
+  background-color: var(--primary-color-background);
+
   border-radius: 0;
   margin-bottom: -.5rem;
   margin-inline: -.5rem;
