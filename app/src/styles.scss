@@ -41,7 +41,7 @@ body {
   border-radius: 0;
   margin-top: -.5rem;
   margin-inline: -.5rem;
-  padding: .5rem;
+  padding: .5rem 2rem;
 }
 
 #footer .p-toolbar {
@@ -54,4 +54,9 @@ body {
 
 .content {
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+.special-font {
+  font-family: "Lucida Calligraphy", sans-serif;
+  font-size: 2rem;
 }
