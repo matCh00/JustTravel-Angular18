@@ -1,6 +1,6 @@
 import {Component, DestroyRef, inject, OnInit, signal} from '@angular/core';
 import {Carousel} from 'primeng/carousel';
-import {FileService} from '../../../shared/services/file.service';
+import {ApiService} from '../../../shared/services/api.service';
 import {Place} from '../../../shared/models/place.model';
 import {ProgressSpinner} from 'primeng/progressspinner';
 
@@ -20,14 +20,14 @@ export class TravelCarouselComponent implements OnInit {
   loading = signal<boolean>(false);
   error = signal<boolean>(false);
 
-  private fileService: FileService = inject(FileService);
+  private apiService: ApiService = inject(ApiService);
   private destroyRef: DestroyRef = inject(DestroyRef);
 
 
   ngOnInit(): void {
     this.loading.set(true);
 
-    const sub = this.fileService.getPlaces().subscribe({
+    const sub = this.apiService.getPlaces().subscribe({
       next: places => {
         this.places.set(places);
         this.loading.set(false);

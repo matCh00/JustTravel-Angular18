@@ -6,7 +6,7 @@ import {map, Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class FileService {
+export class ApiService {
 
   private httpClient: HttpClient = inject(HttpClient);
 
