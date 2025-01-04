@@ -10,8 +10,9 @@
 
 
   <ng-template #center>
+    <div style="width: 5rem"></div>
     <span class="logo-font">Just</span>
-    <div class="logo-container mx-5" (click)="triggerPlaneAnimation()">
+    <div class="logo-container  ml-5 mr-4" (click)="triggerPlaneAnimation()">
       <img src="logo.png" alt="" class="globe">
       <img src="plane.png" alt="" class="plane" [@fly]="isAnimating">
     </div>
