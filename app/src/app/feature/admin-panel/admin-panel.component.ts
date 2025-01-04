@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {UsersListComponent} from './users-list/users-list.component';
 

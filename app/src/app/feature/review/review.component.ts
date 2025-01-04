@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ReviewListComponent} from './review-list/review-list.component';
 
 @Component({

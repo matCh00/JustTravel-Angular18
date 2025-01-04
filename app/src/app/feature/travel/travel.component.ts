@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {TravelCarouselComponent} from './travel-carousel/travel-carousel.component';
 import {TravelListComponent} from './travel-list/travel-list.component';
 

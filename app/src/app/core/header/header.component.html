@@ -1,10 +1,13 @@
 <p-toolbar id="header">
+
+
   <ng-template #start>
     <p-button
       type="button" icon="pi pi-bars" [outlined]="true"
       (click)="toggleSidebar.emit(true)"
     ></p-button>
   </ng-template>
+
 
   <ng-template #center>
     <span class="special-font">Just</span>
@@ -15,9 +18,12 @@
     <span class="special-font">Travel</span>
   </ng-template>
 
+
   <ng-template #end>
     <p-button
       type="button" icon="pi pi-user" [outlined]="true" label="Log in"
     ></p-button>
   </ng-template>
+
+
 </p-toolbar>
