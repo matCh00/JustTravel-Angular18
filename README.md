@@ -26,6 +26,7 @@ g { color: gold }
         * users-list
         * _component, routes_
             * <x>lazy</x>
+            * <x>defer: @defer</x>
     * [map](app/src/app/feature/map)
         * _component, routes_
             * <x>lazy</x>
@@ -40,6 +41,7 @@ g { color: gold }
         * travel-list
         * _component, routes_
             * <x>lazy</x>
+            * <x>defer: @defer</x>
 
 <br>
 

@@ -1,3 +1,13 @@
-<app-travel-carousel></app-travel-carousel>
+<section id="carousel">
+  <app-travel-carousel></app-travel-carousel>
+</section>
 
-<app-travel-list></app-travel-list>
+
+
+@defer (on viewport) {
+
+  <section id="list">
+    <app-travel-list></app-travel-list>
+  </section>
+}
+@placeholder {<div></div>}

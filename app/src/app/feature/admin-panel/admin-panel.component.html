@@ -1,3 +1,13 @@
-<app-dashboard></app-dashboard>
+<section id="dashboard">
+  <app-dashboard></app-dashboard>
+</section>
 
-<app-users-list></app-users-list>
+
+
+@defer (on viewport) {
+
+  <section id="users">
+    <app-users-list></app-users-list>
+  </section>
+}
+@placeholder {<div></div>}
