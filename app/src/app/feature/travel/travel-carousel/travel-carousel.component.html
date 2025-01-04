@@ -1,1 +1,36 @@
-<p>travel-carousel works!</p>
+@if (loading()) {
+  <div class="flex justify-content-center align-items-center">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+}
+
+
+@if (!loading() && error()) {
+  <div class="flex justify-content-center align-items-center">
+    <strong style="color: red">Couldn't load images, try to restart api</strong>
+  </div>
+}
+
+
+@if (!loading() && !error()) {
+  <p-carousel
+    [value]="places()"
+    [numVisible]="2"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="10000"
+    [showIndicators]="false"
+  >
+    <ng-template let-image #item>
+      <div class="m-3">
+        <img [src]="'http://localhost:3000/' + image.filename" [alt]="image.name" style="width: 100%; border-radius: 2rem;"/>
+        <div>
+          <p class="h1-font p-text-center">{{ image.name }}</p>
+          <p class="h2-font p-text-center">{{ image.location }}</p>
+        </div>
+      </div>
+    </ng-template>
+
+  </p-carousel>
+}
+

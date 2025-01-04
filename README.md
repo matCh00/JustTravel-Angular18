@@ -37,6 +37,10 @@ g { color: gold }
             * <x>lazy</x>
     * [travel](app/src/app/feature/travel)
         * travel-carousel
+          * <x>signal()</x>
+          * <x>DestroyRef</x>
+          * <x>inject()</x>
+          * <x>@if</x>
         * travel-details
         * travel-list
         * _component, routes_
@@ -45,7 +49,11 @@ g { color: gold }
 
 <br>
 
-* **[shared](app/src/app/shared)** - _folder with shared standalone components_
+* **[shared](app/src/app/shared)** - _folder with shared elements_  
+    * models
+    * services
+      * file.service
+        * <x>inject()</x>
 
 <br>
 

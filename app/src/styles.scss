@@ -43,6 +43,7 @@ body {
   margin-top: -.5rem;
   margin-inline: -.5rem;
   padding: .5rem 2rem;
+  z-index: 9999;
 }
 
 #footer .p-toolbar {
@@ -51,23 +52,49 @@ body {
   margin-bottom: -.5rem;
   margin-inline: -.5rem;
   padding: .5rem;
+  z-index: 9999;
 }
 
 
 
 @font-face {
-  font-family: 'SpecialFont';
+  font-family: 'Font-Light';
   src: url('../public/PlaywriteAUSA-Light.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Font-Thin';
+  src: url('../public/PlaywriteAUSA-Thin.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Font-Regular';
+  src: url('../public/PlaywriteAUSA-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-.special-font {
-  font-family: 'SpecialFont';
+.logo-font {
+  font-family: 'Font-Light', sans-serif;
   font-size: 2rem;
 }
+
+.h1-font {
+  font-family: 'Font-Regular', sans-serif;
+  font-size: 1.5rem;
+}
+
+.h2-font {
+  font-family: 'Font-Thin', sans-serif;
+  font-size: 1.2rem;
+}
+
 
 
 section {
   height: 100vh;
+  padding: 1rem;
+  position: relative;
 }

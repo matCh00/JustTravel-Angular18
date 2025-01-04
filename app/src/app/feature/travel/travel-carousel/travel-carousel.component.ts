@@ -1,12 +1,46 @@
-import {Component} from '@angular/core';
+import {Component, DestroyRef, inject, OnInit, signal} from '@angular/core';
+import {Carousel} from 'primeng/carousel';
+import {FileService} from '../../../shared/services/file.service';
+import {Place} from '../../../shared/models/place.model';
+import {ProgressSpinner} from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-travel-carousel',
   standalone: true,
-  imports: [],
+  imports: [
+    Carousel,
+    ProgressSpinner
+  ],
   templateUrl: './travel-carousel.component.html',
   styleUrl: './travel-carousel.component.scss'
 })
-export class TravelCarouselComponent {
+export class TravelCarouselComponent implements OnInit {
+
+  places = signal<Place[]>([]);
+  loading = signal<boolean>(false);
+  error = signal<boolean>(false);
+
+  private fileService: FileService = inject(FileService);
+  private destroyRef: DestroyRef = inject(DestroyRef);
+
+
+  ngOnInit(): void {
+    this.loading.set(true);
+
+    const sub = this.fileService.getPlaces().subscribe({
+      next: places => {
+        this.places.set(places);
+        this.loading.set(false);
+      },
+      error: error => {
+        this.loading.set(false);
+        this.error.set(true);
+      },
+    })
+
+    this.destroyRef.onDestroy(() => {
+      sub.unsubscribe();
+    })
+  }
 
 }
