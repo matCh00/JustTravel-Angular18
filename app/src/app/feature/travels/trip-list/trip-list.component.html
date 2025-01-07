@@ -1,0 +1,34 @@
+<p-table [value]="trips()">
+
+  <ng-template #header>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Actions</th>
+    </tr>
+  </ng-template>
+
+  <ng-template #body let-place>
+    <tr>
+      <td>{{ place.name }}</td>
+      <td>{{ place.location }}</td>
+      <td>{{ place.startDate }}</td>
+      <td>{{ place.endDate }}</td>
+      <td>
+        <p-button
+          type="button" icon="pi pi-info" [outlined]="true"
+          [routerLink]="['travel', place.id]" [pTooltip]="'Details'"
+        ></p-button>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template #emptymessage>
+    <tr>
+      <td colspan="5" class="text-center">No data</td>
+    </tr>
+  </ng-template>
+
+</p-table>
