@@ -19,12 +19,14 @@ g { color: gold }
         * two-way: <x>model()</x>
     * component flow:
         * <x>signal()</x>
+        * <x>viewChild()</x>
         * async: <x>toSignal + Observable<x>
         * destroy: <x>DestroyRef<x>
     * injectable:
         * <x>inject()</x>
     * html flow:
         * <x>@if</x>
+        * <x>@for</x>
         * defer: <x>@defer</x>
 
 
