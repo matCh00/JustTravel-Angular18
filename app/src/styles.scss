@@ -103,3 +103,10 @@ section {
   padding: 1rem;
   position: relative;
 }
+
+
+#street-view {
+  .gm-iv-address {
+    display: none !important;
+  }
+}

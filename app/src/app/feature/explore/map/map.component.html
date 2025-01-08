@@ -1,0 +1,49 @@
+<div class="grid" style="height: 70vh">
+
+
+  <div class="col-10">
+    @if (!streetViewVisible) {
+      <google-map
+        width="100%"
+        height="100%"
+        [center]="center"
+        [options]="options"
+      ></google-map>
+    }
+
+    <div
+      id="street-view"
+      style="width: 100%; height: 100%;"
+      [ngStyle]="{'height': !streetViewVisible ? '0px' : '100%'}"
+    ></div>
+  </div>
+
+
+  <div class="col-2 flex flex-column align-items-center">
+    <p-button label="Randomize place" (click)="randomizePlace()"></p-button>
+
+    @if (showAnswerInput) {
+      <div class="flex flex-column gap-3 align-items-center">
+        <strong class="p-my-3">Country:</strong>
+        <div class="p-d-flex">
+          <input [(ngModel)]="userAnswer" placeholder="Answer" pInputText style="flex-grow: 1" />
+          <p-button icon="pi pi-check" (click)="checkAnswer()"></p-button>
+        </div>
+        @if (correct === false) {
+          <strong style="color: red" class="p-my-3">Wrong</strong>
+        }
+        @if (correct === true) {
+          <strong style="color: green" class="p-my-3">Right!</strong>
+        }
+        @if (correct !== undefined) {
+          <strong class="p-my-3">Count: {{count}}</strong>
+        }
+        @if (correct === true) {
+          <p-button label="OK" (click)="ok()"></p-button>
+        }
+      </div>
+    }
+  </div>
+
+
+</div>
