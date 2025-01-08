@@ -2,3 +2,14 @@
   <p class="h1-font text-center">Your trips</p>
   <app-trip-list></app-trip-list>
 </section>
+
+
+
+@defer (on viewport) {
+
+  <section id="map">
+    <p class="h1-font text-center">Quick create and use!</p>
+    <app-map-travels></app-map-travels>
+  </section>
+
+} @placeholder {<div></div>}

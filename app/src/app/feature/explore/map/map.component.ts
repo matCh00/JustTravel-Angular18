@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {GoogleMap} from '@angular/google-maps';
 import {Button} from 'primeng/button';
 import {InputText} from 'primeng/inputtext';
@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {NgStyle} from '@angular/common';
 
 @Component({
-  selector: 'app-map',
+  selector: 'app-map-explore',
   standalone: true,
   imports: [
     GoogleMap,
@@ -20,8 +20,8 @@ import {NgStyle} from '@angular/common';
 })
 export class MapComponent {
 
-  center = {lat: 52.2297, lng: 21.0122};
-  options: google.maps.MapOptions = {
+  center = signal({lat: 52.2297, lng: 21.0122});
+  options = signal<google.maps.MapOptions>({
     mapId: "MAP_ID",
     mapTypeId: 'roadmap',
     zoom: 12,
@@ -30,9 +30,9 @@ export class MapComponent {
     streetViewControl: true,
     fullscreenControl: true,
     zoomControl: true,
-  };
+  });
 
-  places = [
+  places = signal([
     { name: 'Washington, D.C.', country: 'USA', position: { lat: 38.9072, lng: -77.0369 } },
     { name: 'Ottawa', country: 'Canada', position: { lat: 45.4215, lng: -75.6972 } },
     { name: 'Mexico City', country: 'Mexico', position: { lat: 19.4326, lng: -99.1332 } },
@@ -82,45 +82,45 @@ export class MapComponent {
     { name: 'Quito', country: 'Ecuador', position: { lat: -0.1807, lng: -78.4678 } },
     { name: 'Caracas', country: 'Venezuela', position: { lat: 10.4806, lng: -66.9036 } },
     { name: 'Havana', country: 'Cuba', position: { lat: 23.1136, lng: -82.3666 } },
-  ];
+  ]);
 
-  randomPlace: any;
-  streetViewVisible = false;
-  showAnswerInput = false;
-  userAnswer = '';
-  panorama!: google.maps.StreetViewPanorama;
-  lastRequestTime = 0;
-  correct: boolean | undefined = undefined;
-  count = 0;
+  randomPlace = signal<{name: string, country: string, position: {lat: number, lng: number}} | null>(null);
+  streetViewVisible = signal<boolean>(false);
+  showAnswerInput = signal<boolean>(false);
+  userAnswer = signal<string>('');
+  panorama = signal<google.maps.StreetViewPanorama | null>(null);
+  lastRequestTime = signal<number>(0);
+  correct = signal<boolean | undefined>(undefined);
+  count = signal<number>(0);
 
 
   randomizePlace() {
-    this.count = 0;
-    this.correct = undefined;
+    this.count.set(0);
+    this.correct.set(undefined);
 
-    this.randomPlace = this.places[Math.floor(Math.random() * this.places.length)];
-    this.streetViewVisible = true;
-    this.showAnswerInput = true;
+    this.randomPlace.set(this.places()[Math.floor(Math.random() * this.places().length)]);
+    this.streetViewVisible.set(true);
+    this.showAnswerInput.set(true);
     this.loadStreetView();
-    console.log(this.randomPlace)
+    console.log(this.randomPlace())
   }
 
 
   loadStreetView() {
     const streetViewDiv = document.getElementById('street-view');
     if (streetViewDiv) {
-      this.panorama = new google.maps.StreetViewPanorama(streetViewDiv, {
-        position: this.randomPlace.position,
+      this.panorama.set(new google.maps.StreetViewPanorama(streetViewDiv, {
+        position: this.randomPlace()!.position,
         pov: { heading: 100, pitch: 0 },
         zoom: 1,
         enableCloseButton: false,
-      });
-      this.panorama.addListener('pov_changed', () => {
+      }));
+      this.panorama()!.addListener('pov_changed', () => {
         const currentTime = Date.now();
-        if (currentTime - this.lastRequestTime > 1000) {
-          this.lastRequestTime = currentTime;
+        if (currentTime - this.lastRequestTime() > 1000) {
+          this.lastRequestTime.set(currentTime);
         } else {
-          this.panorama.setPosition(this.randomPlace.position);
+          this.panorama()?.setPosition(this.randomPlace()!.position);
         }
       });
     }
@@ -128,20 +128,20 @@ export class MapComponent {
 
 
   checkAnswer() {
-    if (this.userAnswer.trim().toLowerCase() === this.randomPlace.country.toLowerCase()) {
-      this.count++;
-      this.correct = true;
+    if (this.userAnswer().trim().toLowerCase() === this.randomPlace()!.country.toLowerCase()) {
+      this.count.update(c => c + 1);
+      this.correct.set(true);
     }
     else {
-      this.count++;
-      this.correct = false;
+      this.count.update(c => c + 1);
+      this.correct.set(false);
     }
   }
 
   ok() {
-    this.streetViewVisible = false;
-    this.center = this.randomPlace.position;
-    this.showAnswerInput = false;
+    this.streetViewVisible.set(false);
+    this.center.set(this.randomPlace()!.position);
+    this.showAnswerInput.set(false);
   }
 
 }

@@ -66,6 +66,7 @@ g { color: gold }
 
 * **[shared](app/src/app/shared)** - _folder with shared elements_
     * components
+      * google-maps
     * models
         * place.model
         * trip.model

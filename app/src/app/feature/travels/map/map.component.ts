@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {GoogleMapsComponent} from '../../../shared/components/google-maps/google-maps.component';
 
 @Component({
-  selector: 'app-map-travel',
+  selector: 'app-map-travels',
   standalone: true,
   imports: [
     GoogleMapsComponent
