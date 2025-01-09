@@ -15,7 +15,9 @@
     <span class="logo-font">Just</span>
     <div class="logo-container  ml-5 mr-4" (click)="triggerPlaneAnimation()">
       <img src="logo.png" alt="" class="globe">
-      <img src="plane.png" alt="" class="plane" [@fly]="isAnimating">
+      @for (plane of planes; track plane; let i = $index) {
+        <img [src]="plane.src" alt="" class="plane" [@fly]="isAnimating && selectedPlane === i">
+      }
     </div>
     <span class="logo-font">Travel</span>
   </ng-template>
@@ -24,7 +26,7 @@
   <ng-template #end>
     <div class="w-10rem flex align-items-center justify-content-end">
       <p-button
-        type="button" icon="pi pi-user" [outlined]="true" label="Log in"
+        type="button" icon="pi pi-user" [outlined]="true" label="matCh00"
       ></p-button>
     </div>
   </ng-template>
