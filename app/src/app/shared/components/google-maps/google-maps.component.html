@@ -66,7 +66,14 @@
 
   <div class="m-2">
     <p-button (click)="exportMap()" label="Export to .txt" [disabled]="locations().length < 2"></p-button>
-    <input [ngModel]="shareUrl()" pInputText placeholder="Google maps url" class="ml-2 w-20rem flex-grow-1" readonly/>
+    <input [ngModel]="shareUrl()" pInputText placeholder="Google Maps URL" class="ml-2 w-20rem flex-grow-1" readonly/>
+    <input
+      #urlInput
+      pInputText
+      placeholder="Enter Google Maps URL..."
+      class="ml-2 w-20rem flex-grow-1"
+      (keyup.enter)="processUrl(urlInput.value); urlInput.value = ''"
+    />
   </div>
 
 

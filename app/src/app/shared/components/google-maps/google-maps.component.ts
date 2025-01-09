@@ -205,4 +205,37 @@ export class GoogleMapsComponent implements AfterViewInit {
     event.preventDefault();
   }
 
+
+  async processUrl(url: string) {
+    try {
+      const segments = url.split('/');
+      const dirIndex = segments.indexOf('dir');
+      const filteredSegments = dirIndex >= 0 ? segments.slice(dirIndex + 1) : [];
+
+      const locations = await Promise.all(
+        filteredSegments.map(async (segment) => {
+          const coordinateMatch = segment.match(/^(-?\d+(\.\d+)?),(-?\d+(\.\d+)?)/);
+          if (coordinateMatch) {
+            const lat = parseFloat(coordinateMatch[1]);
+            const lng = parseFloat(coordinateMatch[3]);
+            const title = await this.getAddress(lat, lng);
+            return {lat, lng, title: title || 'Unnamed Location'};
+          } else {
+            return {lat: null, lng: null, title: decodeURIComponent(segment.replace(/\+/g, ' '))};
+          }
+        })
+      );
+
+      this.locations.set(locations.filter((location) => location.lat !== null && location.lng !== null));
+
+      this.updateRoute();
+
+      if (this.locations().length > 0) {
+        this.center.set({lat: this.locations()[0].lat, lng: this.locations()[0].lng});
+      }
+    } catch (error) {
+      console.error('Error processing URL:', error);
+    }
+  }
+
 }
