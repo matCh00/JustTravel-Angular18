@@ -6,6 +6,7 @@ import {Trip} from '../../../shared/models/trip.model';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {RouterLink} from '@angular/router';
 import {Tooltip} from 'primeng/tooltip';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-trip-list',
@@ -14,7 +15,8 @@ import {Tooltip} from 'primeng/tooltip';
     Button,
     TableModule,
     RouterLink,
-    Tooltip
+    Tooltip,
+    DatePipe
   ],
   templateUrl: './trip-list.component.html',
   styleUrl: './trip-list.component.scss'

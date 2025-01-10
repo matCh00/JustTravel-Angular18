@@ -1,8 +1,19 @@
-import {AfterViewInit, Component, effect, ElementRef, inject, input, NgZone, signal, viewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  model,
+  NgZone,
+  signal,
+  viewChild
+} from '@angular/core';
 import {Button} from 'primeng/button';
 import {GoogleMap, MapDirectionsRenderer, MapMarker} from '@angular/google-maps';
 import {InputText} from 'primeng/inputtext';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Location} from '../../models/location.model';
+
 
 @Component({
   selector: 'app-google-maps',
@@ -21,8 +32,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 })
 export class GoogleMapsComponent implements AfterViewInit {
 
-  locationsInput = input<{ lat: number; lng: number; title?: string }[]>([]);
-  locations = signal<{ lat: number; lng: number; title?: string }[]>([]);
+  locations = model<Location[]>([]);
 
   searchBox = viewChild<ElementRef<HTMLInputElement>>('searchBox');
 
@@ -49,13 +59,6 @@ export class GoogleMapsComponent implements AfterViewInit {
 
 
   private ngZone: NgZone = inject(NgZone);
-
-
-  constructor() {
-    effect(() => {
-      this.locations.set([...this.locationsInput()]);
-    }, { allowSignalWrites: true });
-  }
 
 
   ngAfterViewInit(): void {

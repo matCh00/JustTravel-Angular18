@@ -14,12 +14,20 @@
     <tr>
       <td>{{ place.name }}</td>
       <td>{{ place.location }}</td>
-      <td>{{ place.startDate }}</td>
-      <td>{{ place.endDate }}</td>
+      <td>{{ place.startDate | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ place.endDate | date: 'dd/MM/yyyy'}}</td>
       <td>
         <p-button
-          type="button" icon="pi pi-eye" [outlined]="true"
-          [routerLink]="['/travel', place.id]" [pTooltip]="'Details'"
+          type="button" icon="pi pi-eye" [outlined]="true" class="mr-2"
+          [routerLink]="['/travel', place.id]" [queryParams]="{edit: false}" [pTooltip]="'Show'"
+        ></p-button>
+        <p-button
+          type="button" icon="pi pi-pencil" [outlined]="true" class="mr-2"
+          [routerLink]="['/travel', place.id]" [queryParams]="{edit: true}" [pTooltip]="'Edit'"
+        ></p-button>
+        <p-button
+          type="button" icon="pi pi-trash" [outlined]="true"
+          [pTooltip]="'Delete'"
         ></p-button>
       </td>
     </tr>

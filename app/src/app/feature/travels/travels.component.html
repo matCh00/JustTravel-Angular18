@@ -8,8 +8,12 @@
 @defer (on viewport) {
 
   <section id="map">
-    <p class="h1-font text-center">Quick create and use!</p>
-    <app-map-travels></app-map-travels>
+    <p class="h1-font text-center">Create new trip!</p>
+    <app-map-travels [(locations)]="locations"></app-map-travels>
+
+    <div class="flex justify-content-center mt-5">
+      <p-button (click)="createTrip()" label="Create trip" size="large"></p-button>
+    </div>
   </section>
 
 } @placeholder {<div></div>}

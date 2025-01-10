@@ -28,6 +28,10 @@ g { color: gold }
         * <x>@if</x>
         * <x>@for</x>
         * defer: <x>@defer</x>
+    * dialog:
+        * dynamic <x>dialogService.open()</x>
+    * forms:
+        * <x>Reactive</x>
 
 
 * **other features**:
@@ -53,11 +57,10 @@ g { color: gold }
     * [home](app/src/app/feature/home)
         * hero
         * instruction
-        * nav-buttons
         * _component_
     * [travel](app/src/app/feature/travel)
         * map
-        * _component, routes_
+        * _component, routes, resolver_
     * [travels](app/src/app/feature/travels)
         * trip-dialog
         * trip-list
@@ -66,7 +69,8 @@ g { color: gold }
 
 * **[shared](app/src/app/shared)** - _folder with shared elements_
     * components
-      * google-maps
+        * google-maps
+        * nav-buttons
     * models
         * place.model
         * trip.model
