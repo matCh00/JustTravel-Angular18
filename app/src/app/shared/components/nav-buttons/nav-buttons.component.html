@@ -1,0 +1,18 @@
+<div
+  #navContainer
+  class="flex flex-column gap-2 align-items-end sticky z-5"
+  style="top: 7rem; right: 1rem;"
+>
+
+  @for (fragment of fragments(); track fragment; let index = $index) {
+
+    <p-button
+      [rounded]="true" [outlined]="true"
+      [icon]="'pi ' + fragment.icon"
+      (click)="scrollTo(index)"
+      [pTooltip]="fragment.frag" tooltipPosition="left"
+    />
+
+  }
+
+</div>
