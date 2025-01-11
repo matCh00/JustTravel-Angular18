@@ -10,24 +10,24 @@
     </tr>
   </ng-template>
 
-  <ng-template #body let-place>
+  <ng-template #body let-trip>
     <tr>
-      <td>{{ place.name }}</td>
-      <td>{{ place.location }}</td>
-      <td>{{ place.startDate | date: 'dd/MM/yyyy' }}</td>
-      <td>{{ place.endDate | date: 'dd/MM/yyyy'}}</td>
+      <td>{{ trip.name }}</td>
+      <td>{{ trip.location }}</td>
+      <td>{{ trip.startDate | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ trip.endDate | date: 'dd/MM/yyyy'}}</td>
       <td>
         <p-button
           type="button" icon="pi pi-eye" [outlined]="true" class="mr-2"
-          [routerLink]="['/travel', place.id]" [queryParams]="{edit: false}" [pTooltip]="'Show'"
+          [routerLink]="['/travel', trip.id]" [queryParams]="{edit: false}" [pTooltip]="'Show'"
         ></p-button>
         <p-button
           type="button" icon="pi pi-pencil" [outlined]="true" class="mr-2"
-          [routerLink]="['/travel', place.id]" [queryParams]="{edit: true}" [pTooltip]="'Edit'"
+          [routerLink]="['/travel', trip.id]" [queryParams]="{edit: true}" [pTooltip]="'Edit'"
         ></p-button>
         <p-button
           type="button" icon="pi pi-trash" [outlined]="true"
-          [pTooltip]="'Delete'"
+          [pTooltip]="'Delete'" (click)="delete.emit(trip.id)"
         ></p-button>
       </td>
     </tr>

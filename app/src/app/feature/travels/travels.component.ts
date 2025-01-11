@@ -46,4 +46,9 @@ export class TravelsComponent {
     });
   }
 
+
+  handleDelete(id: string) {
+    this.apiService.deleteTrip(id).subscribe()
+  }
+
 }

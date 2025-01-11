@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, model} from '@angular/core';
 import {GoogleMapsComponent} from '../../../shared/components/google-maps/google-maps.component';
+import {Location} from '../../../shared/models/location.model';
 
 @Component({
   selector: 'app-map-travel',
@@ -11,5 +12,7 @@ import {GoogleMapsComponent} from '../../../shared/components/google-maps/google
   styleUrl: './map.component.scss'
 })
 export class MapComponent {
+
+  locations = model<Location[]>([]);
 
 }

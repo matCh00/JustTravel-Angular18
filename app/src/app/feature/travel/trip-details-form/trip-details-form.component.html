@@ -1,0 +1,23 @@
+<div class="grid" [formGroup]="parentForm">
+
+  <div class="field col-6">
+    <label for="name">Name</label>
+    <input pInputText id="name" formControlName="name" class="w-full">
+  </div>
+
+  <div class="field col-6">
+    <label for="location">Location</label>
+    <input pInputText id="location" formControlName="location" class="w-full">
+  </div>
+
+  <div class="field col-6">
+    <label for="startDate">Start date</label>
+    <p-datePicker id="startDate" formControlName="startDate" styleClass="w-full"></p-datePicker>
+  </div>
+
+  <div class="field col-6">
+    <label for="endDate">End date</label>
+    <p-datePicker id="endDate" formControlName="endDate" styleClass="w-full"></p-datePicker>
+  </div>
+
+</div>

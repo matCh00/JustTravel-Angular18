@@ -7,9 +7,18 @@
 
 
   <div class="flex flex-column gap-3">
-    <a routerLink="/" class="p-button" (click)="sidebarVisible.set(false)">Home</a>
-    <a routerLink="/explore" class="p-button" (click)="sidebarVisible.set(false)">Explore</a>
-    <a routerLink="/travels" class="p-button" (click)="sidebarVisible.set(false)">Travels</a>
+    <a
+      routerLink="/" class="p-button" pButton [text]="true" style="text-decoration: none"
+      (click)="sidebarVisible.set(false)"
+    >Home</a>
+    <a
+      routerLink="/explore" class="p-button" pButton [text]="true" style="text-decoration: none"
+      (click)="sidebarVisible.set(false)"
+    >Explore</a>
+    <a
+      routerLink="/travels" class="p-button" pButton [text]="true" style="text-decoration: none"
+      (click)="sidebarVisible.set(false)"
+    >Travels</a>
   </div>
 
 

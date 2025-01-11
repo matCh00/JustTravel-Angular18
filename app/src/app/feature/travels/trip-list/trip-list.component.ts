@@ -1,4 +1,4 @@
-import {Component, inject, Signal} from '@angular/core';
+import {Component, inject, output, Signal} from '@angular/core';
 import {Button} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import {ApiService} from '../../../shared/services/api.service';
@@ -26,5 +26,7 @@ export class TripListComponent {
   private apiService: ApiService = inject(ApiService);
 
   trips: Signal<Trip[]> = toSignal(this.apiService.getTrips(), {initialValue: []});
+
+  delete = output<string>();
 
 }

@@ -1,6 +1,6 @@
 <section id="trip-list">
   <p class="h1-font text-center">Your trips</p>
-  <app-trip-list></app-trip-list>
+  <app-trip-list (delete)="handleDelete($event)"></app-trip-list>
 </section>
 
 

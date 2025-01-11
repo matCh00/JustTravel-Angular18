@@ -37,7 +37,7 @@ export class ApiService {
   }
 
 
-  getTrip(id: number): Observable<Trip> {
+  getTrip(id: string): Observable<Trip> {
     return this.httpClient.get<{trip: Trip}>(`http://localhost:3000/trips/${id}`).pipe(
       map((res: {trip: Trip}) => res.trip),
       catchError(error => {
@@ -59,7 +59,7 @@ export class ApiService {
 
 
   editTrip(trip: Trip): Observable<any> {
-    return this.httpClient.put(`http://localhost:3000/trips`, trip).pipe(
+    return this.httpClient.put(`http://localhost:3000/trips/${trip.id}`, trip).pipe(
       catchError(error => {
         console.log(error);
         return EMPTY;
@@ -68,7 +68,7 @@ export class ApiService {
   }
 
 
-  deleteTrip(id: number): Observable<any> {
+  deleteTrip(id: string): Observable<any> {
     return this.httpClient.delete(`http://localhost:3000/trips/${id}`).pipe(
       catchError(error => {
         console.log(error);
