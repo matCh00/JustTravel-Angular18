@@ -53,7 +53,6 @@ body {
   margin-inline: -.5rem;
   padding: .5rem;
   z-index: 9999;
-  margin-top: 5rem;
 }
 
 .p-drawer-left {
@@ -100,8 +99,16 @@ body {
 
 section {
   min-height: 100vh;
+  //padding: 1rem 1rem 10rem 1rem;
   padding: 1rem;
   position: relative;
+}
+
+section:nth-of-type(odd) {
+  background: linear-gradient(to right, white, #edffed);
+}
+section:nth-of-type(even) {
+  background: linear-gradient(to left, white, #edf5ff);
 }
 
 
