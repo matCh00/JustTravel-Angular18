@@ -1,22 +1,22 @@
 import {Component, effect, inject, input, OnInit, signal} from '@angular/core';
-import {MapComponent} from './map/map.component';
 import {Trip} from '../../shared/models/trip.model';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TripDetailsFormComponent} from './trip-details-form/trip-details-form.component';
 import {Button} from 'primeng/button';
 import {Location} from '../../shared/models/location.model';
-import {ApiService} from '../../shared/services/api.service';
+import {GoogleMapsComponent} from '../../shared/components/google-maps/google-maps.component';
+import {TripService} from '../../shared/services/trip.service';
 
 @Component({
   selector: 'app-travel',
   standalone: true,
   imports: [
-    MapComponent,
     ReactiveFormsModule,
     TripDetailsFormComponent,
     Button,
     RouterLink,
+    GoogleMapsComponent,
   ],
   templateUrl: './travel.component.html',
   styleUrl: './travel.component.scss'
@@ -30,7 +30,8 @@ export class TravelComponent implements OnInit {
 
 
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
-  private apiService: ApiService = inject(ApiService);
+  private tripService: TripService = inject(TripService);
+  private router: Router = inject(Router);
   private fb: FormBuilder = inject(FormBuilder);
 
 
@@ -49,6 +50,7 @@ export class TravelComponent implements OnInit {
         startDate: new Date(this.trip().startDate),
         endDate: new Date(this.trip().endDate),
       });
+
       this.locations.set(this.trip().waypoints);
     }, {allowSignalWrites: true});
   }
@@ -70,12 +72,9 @@ export class TravelComponent implements OnInit {
       id: this.trip().id,
       waypoints: this.locations(),
     }
-    this.apiService.editTrip(trip).subscribe();
-  }
-
-
-  handleLocationsChange(locations: Location[]) {
-    this.locations.set(locations);
+    this.tripService.editTrip(trip).subscribe(() => {
+      this.router.navigate(['/travels']);
+    });
   }
 
 }

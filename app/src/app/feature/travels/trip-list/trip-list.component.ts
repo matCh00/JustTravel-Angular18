@@ -1,12 +1,12 @@
-import {Component, inject, output, Signal} from '@angular/core';
+import {Component, inject, Signal} from '@angular/core';
 import {Button} from 'primeng/button';
 import {TableModule} from 'primeng/table';
-import {ApiService} from '../../../shared/services/api.service';
 import {Trip} from '../../../shared/models/trip.model';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {RouterLink} from '@angular/router';
 import {Tooltip} from 'primeng/tooltip';
 import {DatePipe} from '@angular/common';
+import {TripService} from '../../../shared/services/trip.service';
 
 @Component({
   selector: 'app-trip-list',
@@ -23,10 +23,14 @@ import {DatePipe} from '@angular/common';
 })
 export class TripListComponent {
 
-  private apiService: ApiService = inject(ApiService);
+  private tripService: TripService = inject(TripService);
 
-  trips: Signal<Trip[]> = toSignal(this.apiService.getTrips(), {initialValue: []});
 
-  delete = output<string>();
+  trips: Signal<Trip[]> = toSignal(this.tripService.trips, {initialValue: []});
+
+
+  deleteTrip(id: string) {
+    this.tripService.deleteTrip(id).subscribe()
+  }
 
 }

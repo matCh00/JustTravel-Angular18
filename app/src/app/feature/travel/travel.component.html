@@ -1,6 +1,6 @@
 <section id="map">
   <p class="h1-font text-center">Route</p>
-  <app-map-travel [locations]="trip().waypoints" (locationsChange)="handleLocationsChange($event)"></app-map-travel>
+  <app-google-maps [(locations)]="locations"></app-google-maps>
 </section>
 
 

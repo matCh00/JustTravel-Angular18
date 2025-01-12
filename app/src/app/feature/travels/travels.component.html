@@ -1,6 +1,6 @@
 <section id="trip-list">
   <p class="h1-font text-center">Your trips</p>
-  <app-trip-list (delete)="handleDelete($event)"></app-trip-list>
+  <app-trip-list></app-trip-list>
 </section>
 
 
@@ -9,10 +9,10 @@
 
   <section id="map">
     <p class="h1-font text-center">Create new trip!</p>
-    <app-map-travels [(locations)]="locations"></app-map-travels>
+    <app-google-maps [(locations)]="locations"></app-google-maps>
 
     <div class="flex justify-content-center mt-5">
-      <p-button (click)="createTrip()" label="Create trip" size="large"></p-button>
+      <p-button (click)="openDialog()" label="Create trip" size="large"></p-button>
     </div>
   </section>
 

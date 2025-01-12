@@ -59,11 +59,9 @@ g { color: gold }
         * instruction
         * _component_
     * [travel](app/src/app/feature/travel)
-        * map
         * trip-details-form
         * _component, routes, resolver_
     * [travels](app/src/app/feature/travels)
-        * map
         * trip-dialog-form
         * trip-list
         * _component, routes_
@@ -74,7 +72,10 @@ g { color: gold }
         * google-maps
         * nav-buttons
     * models
+        * location.model
         * place.model
         * trip.model
     * services
         * api.service
+        * scroll.service
+        * trip.service

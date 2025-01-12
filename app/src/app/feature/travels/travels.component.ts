@@ -1,34 +1,40 @@
-import {Component, inject, model} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {TripListComponent} from "./trip-list/trip-list.component";
-import {MapComponent} from "./map/map.component";
-import {ApiService} from '../../shared/services/api.service';
 import {Location} from '../../shared/models/location.model';
 import {Button} from 'primeng/button';
 import {DialogService} from 'primeng/dynamicdialog';
 import {TripDialogFormComponent} from './trip-dialog-form/trip-dialog-form.component';
 import {Trip} from '../../shared/models/trip.model';
+import {GoogleMapsComponent} from '../../shared/components/google-maps/google-maps.component';
+import {TripService} from '../../shared/services/trip.service';
 
 @Component({
   selector: 'app-travels',
   standalone: true,
   imports: [
     TripListComponent,
-    MapComponent,
-    Button
+    Button,
+    GoogleMapsComponent
   ],
   providers: [DialogService],
   templateUrl: './travels.component.html',
   styleUrl: './travels.component.scss'
 })
-export class TravelsComponent {
+export class TravelsComponent implements OnInit {
 
-  locations = model<Location[]>([]);
+  locations = signal<Location[]>([]);
 
-  private apiService: ApiService = inject(ApiService);
+
+  private tripService: TripService = inject(TripService);
   private dialogService: DialogService = inject(DialogService);
 
 
-  createTrip() {
+  ngOnInit() {
+    this.tripService.fetchTrips();
+  }
+
+
+  openDialog() {
     const ref = this.dialogService.open(TripDialogFormComponent, {
       header: 'Trip info',
       width: '70%',
@@ -41,14 +47,9 @@ export class TravelsComponent {
           ...res,
           waypoints: this.locations()
         }
-        this.apiService.addTrip(trip).subscribe();
+        this.tripService.addTrip(trip).subscribe();
       }
     });
-  }
-
-
-  handleDelete(id: string) {
-    this.apiService.deleteTrip(id).subscribe()
   }
 
 }
