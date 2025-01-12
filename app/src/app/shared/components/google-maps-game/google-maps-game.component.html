@@ -29,11 +29,13 @@
           <input [(ngModel)]="userAnswer" placeholder="Answer" pInputText style="flex-grow: 1" />
           <p-button icon="pi pi-check" (click)="checkAnswer()"></p-button>
         </div>
-        @if (correct() === false) {
-          <strong style="color: red" class="my-3">Wrong</strong>
-        }
-        @if (correct() === true) {
-          <strong style="color: green" class="my-3">Right!</strong>
+        @switch (correct()) {
+          @case (false) {
+            <strong style="color: red" class="my-3">Wrong</strong>
+          }
+          @case (true) {
+            <strong style="color: green" class="my-3">Right!</strong>
+          }
         }
         @if (correct() !== undefined) {
           <strong class="my-3">Count: {{count()}}</strong>

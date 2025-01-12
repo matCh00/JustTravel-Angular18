@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {HeaderComponent} from './core/header/header.component';
 import {SidebarComponent} from './core/sidebar/sidebar.component';
@@ -14,7 +14,7 @@ import {ScrollService} from './shared/services/scroll.service';
 })
 export class AppComponent implements OnInit {
 
-  sidebarVisible: boolean = false;
+  sidebarVisible = signal<boolean>(false);
 
 
   private scrollService: ScrollService = inject(ScrollService);
