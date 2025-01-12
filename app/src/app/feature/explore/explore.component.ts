@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {PlacesCarouselComponent} from './places-carousel/places-carousel.component';
-import {MapComponent} from './map/map.component';
+import {GoogleMapsGameComponent} from '../../shared/components/google-maps-game/google-maps-game.component';
 
 @Component({
   selector: 'app-explore',
   standalone: true,
   imports: [
     PlacesCarouselComponent,
-    MapComponent,
+    GoogleMapsGameComponent,
   ],
   templateUrl: './explore.component.html',
   styleUrl: './explore.component.scss'

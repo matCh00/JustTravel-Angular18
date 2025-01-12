@@ -1,24 +1,25 @@
 import {Component, signal} from '@angular/core';
-import {GoogleMap} from '@angular/google-maps';
 import {Button} from 'primeng/button';
+import {GoogleMap} from '@angular/google-maps';
 import {InputText} from 'primeng/inputtext';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgStyle} from '@angular/common';
 
 @Component({
-  selector: 'app-map-explore',
+  selector: 'app-google-maps-game',
   standalone: true,
   imports: [
-    GoogleMap,
     Button,
+    GoogleMap,
     InputText,
-    FormsModule,
-    NgStyle
+    ReactiveFormsModule,
+    NgStyle,
+    FormsModule
   ],
-  templateUrl: './map.component.html',
-  styleUrl: './map.component.scss'
+  templateUrl: './google-maps-game.component.html',
+  styleUrl: './google-maps-game.component.scss'
 })
-export class MapComponent {
+export class GoogleMapsGameComponent {
 
   center = signal({lat: 52.2297, lng: 21.0122});
   options = signal<google.maps.MapOptions>({
