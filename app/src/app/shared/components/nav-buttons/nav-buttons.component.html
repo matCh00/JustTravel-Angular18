@@ -1,7 +1,11 @@
 <div
   #navContainer
-  class="flex flex-column gap-2 align-items-end sticky z-5"
-  style="top: 7rem; right: 1rem;"
+  [ngClass]="position() === 'topRight'
+    ? 'flex flex-column gap-2 align-items-end sticky z-5'
+    : 'flex gap-2 justify-content-center sticky z-5'"
+  [ngStyle]="position() === 'topRight'
+    ? {top: '7rem', right: '1rem'}
+    : {top: '90vh'}"
 >
 
   @for (fragment of fragments(); track fragment; let index = $index) {
@@ -10,7 +14,7 @@
       [rounded]="true" [outlined]="true"
       [icon]="'pi ' + fragment.icon"
       (click)="scrollTo(index)"
-      [pTooltip]="fragment.frag" tooltipPosition="left"
+      [pTooltip]="fragment.frag" [tooltipPosition]="position() === 'topRight' ? 'left' : 'top'"
     />
 
   }

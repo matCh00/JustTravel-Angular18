@@ -60,6 +60,12 @@ body {
 }
 
 
+app-nav-buttons .p-button {
+  background-color: var(--primary-color-background-transparent);
+  backdrop-filter: blur(5px);
+}
+
+
 
 @font-face {
   font-family: 'Font-Light';
@@ -104,10 +110,10 @@ section {
   position: relative;
 }
 
-section:nth-of-type(odd) {
+section.background-green {
   background: linear-gradient(to right, white, #edffed);
 }
-section:nth-of-type(even) {
+section.background-blue {
   background: linear-gradient(to left, white, #edf5ff);
 }
 
