@@ -1,4 +1,7 @@
-<p-table [value]="trips()">
+<p-table
+  [value]="trips()"
+  [paginator]="true" [rows]="10"
+>
 
   <ng-template #header>
     <tr>
