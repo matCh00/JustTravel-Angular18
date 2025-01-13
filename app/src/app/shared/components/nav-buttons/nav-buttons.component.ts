@@ -39,7 +39,7 @@ export class NavButtonsComponent implements AfterViewInit {
 
 
   scrollTo(index: number): void {
-    const offset = index * window.innerHeight;
+    const offset = index === 1 ? 890 : index === 2 ? 2250 : 0;
     window.scrollTo({
       top: offset,
       behavior: 'smooth'
