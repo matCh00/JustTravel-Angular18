@@ -105,6 +105,7 @@ app-nav-buttons .p-button {
   position: absolute;
   margin-top: 45vh;
   width: 100%;
+  pointer-events: none;
 }
 
 
@@ -147,4 +148,36 @@ section.background-blue {
 
 .p-dialog-content {
   overflow-y: unset !important;
+}
+
+
+.instruction-image {
+  width: 50rem;
+  border: 1px solid var(--green-200);
+  border-radius: 1rem;
+  box-shadow: 0 0 20px var(--green-200);
+}
+
+.instruction-image:hover {
+  transform: rotateZ(1deg);
+  border: 1px solid var(--green-300);
+  box-shadow: 0 0 30px var(--green-300);
+}
+
+
+.instruction {
+  margin-bottom: 5rem;
+
+  &:nth-child(odd) {
+    margin-right: -20vw;
+  }
+  &:nth-child(even) {
+    margin-left: -20vw;
+  }
+}
+
+.instruction:hover {
+  p {
+    font-weight: 900;
+  }
 }
