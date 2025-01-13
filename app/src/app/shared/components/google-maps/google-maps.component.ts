@@ -1,6 +1,6 @@
 import {
   AfterViewInit,
-  Component,
+  Component, effect,
   ElementRef,
   inject,
   model,
@@ -59,6 +59,13 @@ export class GoogleMapsComponent implements AfterViewInit {
 
 
   private ngZone: NgZone = inject(NgZone);
+
+
+  constructor() {
+    effect(() => {
+      this.updateRoute();
+    }, {allowSignalWrites: true});
+  }
 
 
   ngAfterViewInit(): void {
@@ -127,9 +134,11 @@ export class GoogleMapsComponent implements AfterViewInit {
 
     const directionsService = new google.maps.DirectionsService();
     const waypoints = this.locations().slice(1, -1).map((loc) => ({
-      location: {lat: loc.lat, lng: loc.lng},
+      location: new google.maps.LatLng(loc.lat, loc.lng),
       stopover: true,
     }));
+    this.center.set(waypoints[0].location as unknown as {lat: number; lng: number;});
+    console.log(this.center())
 
     const request: google.maps.DirectionsRequest = {
       origin: this.locations()[0],
