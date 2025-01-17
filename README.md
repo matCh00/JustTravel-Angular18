@@ -2,6 +2,12 @@
 
 ## new Angular structure and best practices
 
+### Main View
+![main view](app/public/main-view.PNG)
+
+### Preview
+![preview](app/public/preview.gif)
+
 ---------------------
 <style>
 x { color: orange }
